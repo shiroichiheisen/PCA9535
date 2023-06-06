@@ -5,8 +5,8 @@ To use this library:
 ```
 uint8_t pcaAdress = 0x20;
 
-PCA9535 pca(Wire, pcaAdress);
-PCA9535 pca(Wire, pcaAdress, 1); // to inicialize the library and start the wire library
+PCA9535 pca(pcaAdress);
+PCA9535 pca(pcaAdress, 1); // to inicialize the library and start the wire library
 
 void loop() {
   uint8_t inputGpio0 = pca.readInputGpioGroup0(); // read the input GPIO group 0

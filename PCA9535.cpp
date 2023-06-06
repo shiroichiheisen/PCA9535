@@ -1,9 +1,8 @@
 #include "Arduino.h"
 #include "PCA9535.h"
 
-PCA9535::PCA9535(TwoWire *wireInput, uint8_t PCAaddress, bool beginWire)
+PCA9535::PCA9535(uint8_t PCAaddress, bool beginWire)
 {
-  wire = wireInput;
   PCA9535Address = PCAaddress;
   if (beginWire)
     Wire.begin();
@@ -11,23 +10,23 @@ PCA9535::PCA9535(TwoWire *wireInput, uint8_t PCAaddress, bool beginWire)
 
 void PCA9535::writeI2c(uint8_t address, uint8_t data)
 {
-  wire->beginTransmission(address);
-  wire->write(data);
-  wire->endTransmission();
+  Wire.beginTransmission(address);
+  Wire.write(data);
+  Wire.endTransmission();
 }
 
 void PCA9535::writeI2c(uint8_t address, uint8_t data, uint8_t data2)
 {
-  wire->beginTransmission(address);
-  wire->write(data);
-  wire->write(data2);
-  wire->endTransmission();
+  Wire.beginTransmission(address);
+  Wire.write(data);
+  Wire.write(data2);
+  Wire.endTransmission();
 }
 
 uint8_t PCA9535::readI2c(uint8_t address)
 {
-  wire->requestFrom(address, returnDataSize);
-  return wire->read();
+  Wire.requestFrom(address, returnDataSize);
+  return Wire.read();
 }
 
 uint8_t PCA9535::readInputGpioGroup0()

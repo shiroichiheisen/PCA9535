@@ -7,7 +7,7 @@
 class PCA9535
 {
 public:
-	PCA9535(TwoWire *wireInput, uint8_t PCAaddress, bool beginWire = false);
+	PCA9535(uint8_t PCAaddress, bool beginWire = false);
 	uint8_t readInputGpioGroup0();
 	uint8_t readInputGpioGroup1();
 	uint8_t readOutputGpioGroup0();
